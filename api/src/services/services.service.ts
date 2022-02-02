@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 import { Producer } from '@nestjs/microservices/external/kafka.interface';
+import { Logger } from '@nestjs/common';
 
 @Injectable()
 export class ServicesService {
@@ -40,6 +41,11 @@ export class ServicesService {
   }
 
   sendKafkaEvent(key, value) {
+    const message = { key, value: JSON.stringify(value) };
+    Logger.debug(
+      `sending message: ${JSON.stringify(message, null, 2)}`,
+      'ServicesService',
+    );
     this.kafkaProducer.send({
       topic: 'services',
       messages: [{ key, value: JSON.stringify(value) }],
