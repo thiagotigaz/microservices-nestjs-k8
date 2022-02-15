@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { CreateServiceDto } from './dto/create-service.dto';
-import { UpdateServiceDto } from './dto/update-service.dto';
+import { CreateServiceDto, UpdateServiceDto } from '@limascloud/common-dto';
 import { Producer } from '@nestjs/microservices/external/kafka.interface';
 import { Logger } from '@nestjs/common';
 

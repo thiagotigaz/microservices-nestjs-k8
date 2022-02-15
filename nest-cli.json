@@ -25,6 +25,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/microservices/tsconfig.app.json"
       }
+    },
+    "common-dto": {
+      "type": "library",
+      "root": "libs/common-dto",
+      "entryFile": "index",
+      "sourceRoot": "libs/common-dto/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common-dto/tsconfig.lib.json"
+      }
     }
   }
 }

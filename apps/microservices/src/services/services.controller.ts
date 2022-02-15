@@ -1,11 +1,12 @@
 import { Controller, Logger, ValidationPipe } from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
-import { KafkaServiceDto } from './dto/kafka-service.dto';
-
-import { CreateServiceDto } from './dto/create-service.dto';
-import { UpdateServiceDto } from './dto/update-service.dto';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
-import { DeleteServiceDto } from './dto/delete-service.dto';
+import {
+  KafkaServiceDto,
+  CreateServiceDto,
+  UpdateServiceDto,
+  DeleteServiceDto,
+} from '@limascloud/common-dto';
 
 @Controller()
 export class ServicesController {
