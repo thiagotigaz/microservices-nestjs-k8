@@ -9,7 +9,7 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
-          brokers: ['host.docker.internal:9094'],
+          brokers: process.env.KAFKA_BROKERS.split(','),
         },
         consumer: {
           groupId: `microservices-${Math.floor(Math.random() * 100)}`,

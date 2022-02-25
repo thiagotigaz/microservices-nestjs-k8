@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "build-microservices": "nest build microservices",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^1.2.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/event-emitter": "^1.0.0",
     "@nestjs/mapped-types": "*",
@@ -52,7 +54,7 @@
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
     "ts-jest": "^27.0.3",
-    "ts-loader": "^9.2.3",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5"

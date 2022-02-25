@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-deployment
+  labels:
+    app: microservices
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microservices
+  template:
+    metadata:
+      labels:
+        app: microservices
+    spec:
+      containers:
+        - name: microservices
+          image: limascloud/node
+          imagePullPolicy: IfNotPresent
+          args: [ "dist/apps/microservices/main" ]
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: kafka-url

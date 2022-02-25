@@ -2,22 +2,27 @@ import { Module } from '@nestjs/common';
 import { ServicesService } from './services.service';
 import { ServicesController } from './services.controller';
 import { ClientKafka, ClientsModule, Transport } from '@nestjs/microservices';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ClientsModule.register([
+    ClientsModule.registerAsync([
       {
         name: 'CLIENT_KAFKA',
-        transport: Transport.KAFKA,
-        options: {
-          client: {
-            clientId: 'services',
-            brokers: ['host.docker.internal:9094'],
+        useFactory: (configService: ConfigService) => ({
+          name: 'CLIENT_KAFKA',
+          transport: Transport.KAFKA,
+          options: {
+            client: {
+              clientId: 'services',
+              brokers: configService.get<string>('KAFKA_BROKERS').split(','),
+            },
+            consumer: {
+              groupId: 'services',
+            },
           },
-          consumer: {
-            groupId: 'services',
-          },
-        },
+        }),
+        inject: [ConfigService],
       },
     ]),
   ],

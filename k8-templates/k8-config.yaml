@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+data:
+  kafka-url: kafka-service:9092
+  zookeeper-url: zookeeper-service:2181
+  postgres-user: nestjs-microservices
